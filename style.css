@@ -1,4 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    margin: 0;
     background-color: #0d1117;
-    color: #e6e6e6;
+    color: #c9d1d9;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: #f0f6fc;
+    line-height: 1.2;
+}
+
+a {
+    color: #58a6ff;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(180deg, #161b22, #0d1117);
+    border-bottom: 1px solid #30363d;
+    padding: 1.75rem 0;
+}
+
+/* Padding sits on the inner box so the text lines up with .section text. */
+.hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.5rem;
+    color: #8b949e;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.hero h1 {
+    margin: 0 0 0.5rem;
+    font-size: 1.875rem;
+}
+
+.tagline {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    max-width: 40rem;
+}
+
+/* Buttons  for links */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #c9d1d9;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #161b22;
+}
+
+/*  fixed header nav bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0.5rem 0;
+    background-color: #161b22;
+    border-bottom: 1px solid #30363d;
+
+    /* Hidden until .visible is added on scroll. Inspired from examples from claude */
+    transform: translateY(-100%);
+    transition: transform 0.25s ease;
+}
+
+.navbar.visible {
+    transform: translateY(0);
+}
+
+.navbar-links {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/*  Sections  */
+.section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    scroll-margin-top: 4.5rem;
+}
+
+/*  Artifact demo GIFs  */
+.artifact-demo {
+    margin: 1.25rem 0 0;
+    max-width: 720px;
+}
+
+.artifact-demo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+}
+
+.artifact-demo figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #8b949e;
+}
+
+/*  Embedded code review  */
+.video-embed {
+    max-width: 720px;
+    margin: 1.25rem 0;
+    aspect-ratio: 16 / 9;
+}
+
+.video-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+}
+
+/*  copy of the body same measure in the self-assessment and the artifact narratives  */
+#self-assessment p,
+#self-assessment h4,
+#artifacts p,
+#artifacts h4 {
+    max-width: 70ch;
+}
+
+#self-assessment h3 {
+    margin-top: 2.5rem;
+}
+
+#self-assessment h4,
+#artifacts h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+/*  Intro + Merit badges  */
+.intro {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 2.5rem;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-text h2 {
+    margin-top: 0;
+}
+
+.recognition {
+    flex-shrink: 0;
+    width: 260px;
+    text-align: center;
+}
+
+.merit-badges {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.recognition h3 {
+    margin: 2rem 0 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #30363d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #8b949e;
+}
+
+.honors {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.honors li {
+    margin-bottom: 0.75rem;
+}
+
+.honors strong {
+    display: block;
+    color: #f0f6fc;
+    font-size: 0.95rem;
+}
+
+.honors span {
+    font-size: 0.875rem;
+    color: #8b949e;
+}
+
+/*  Mobile css */
+@media (max-width: 640px) {
+    .intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .recognition {
+        width: 100%;
+    }
+
 }
