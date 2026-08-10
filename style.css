@@ -1,3 +1,12 @@
+/* 
+This is the CSS file for my ePortfolio
+8/10/26
+This file was inspired by https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics
+and inspired by examples from Claude on how to connect CSS to HTML and improve UI and UX.
+
+*/
+
+
 * {
     box-sizing: border-box;
 }
@@ -78,33 +87,73 @@ a {
     background-color: #161b22;
 }
 
-/*  fixed header nav bar */
+/*  Artifacts is the primary destination in the nav, so it gets a filled treatment
+    instead of the outlined default. Fill and weight both change, so the emphasis
+    never depends on color alone. */
+.btn-primary {
+    background-color: #58a6ff;
+    border-color: #58a6ff;
+    color: #0d1117;
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background-color: #79c0ff;
+    border-color: #79c0ff;
+}
+
+/*  Keyboard users need to see what is focused; white reads on both button styles. */
+.btn:focus-visible {
+    outline: 2px solid #f0f6fc;
+    outline-offset: 2px;
+}
+
+/*  Header nav bar. Sticky rather than fixed so it is visible on arrival, takes up
+    its own space at the top of the page, then stays pinned once the user scrolls. */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 10;
     padding: 0.5rem 0;
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
-
-    /* Hidden until .visible is added on scroll. Inspired from examples from claude */
-    transform: translateY(-100%);
-    transition: transform 0.25s ease;
 }
 
-.navbar.visible {
-    transform: translateY(0);
+.navbar .btn {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8125rem;
 }
 
-.navbar-links {
+/*  Two stacked rows: page sections on top, narratives underneath. */
+.navbar-inner {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 1.5rem;
     display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.navbar-row {
+    display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/*  Labels the second row so the narratives are not mistaken for page sections. */
+.navbar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #8b949e;
+}
+
+/*  Marks the narrative page the reader is currently on. */
+.btn[aria-current="page"] {
+    background-color: #21262d;
+    border-color: #8b949e;
+    color: #f0f6fc;
 }
 
 /*  Sections  */
@@ -112,7 +161,8 @@ a {
     max-width: 1000px;
     margin: 0 auto;
     padding: 1.25rem 1.5rem;
-    scroll-margin-top: 4.5rem;
+    /*  Clears the two-row sticky nav so anchored headings are not hidden behind it. */
+    scroll-margin-top: 6.5rem;
 }
 
 /*  Artifact demo GIFs  */
@@ -149,61 +199,207 @@ a {
     border-radius: 6px;
 }
 
-/*  copy of the body same measure in the self-assessment and the artifact narratives  */
+/*  copy of the body same measure in the self-assessment  */
 #self-assessment p,
-#self-assessment h4,
 #artifacts p,
 #artifacts h4 {
     max-width: 70ch;
+}
+
+/*  measure and heading spacing on the narratives page  */
+.narrative p,
+.narrative h2 {
+    max-width: 70ch;
+}
+
+/*  Screenshots in a narrative break out past the 1000px section so UI text stays readable.  */
+.narrative-figure {
+    width: min(1400px, 92vw);
+    max-width: none;
+    margin: 0.5rem 0 0 50%;
+    transform: translateX(-50%);
+}
+
+.narrative code {
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    background-color: #161b22;
+    font-size: 0.9em;
+}
+
+.narrative .references {
+    max-width: 70ch;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.narrative .references li {
+    margin-bottom: 0.75rem;
+}
+
+/*  Narrative tables let wide tables scroll  */
+.table-wrap {
+    margin: 1rem 0 1.5rem;
+    overflow-x: auto;
+}
+
+.table-wrap table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 0.875rem;
+}
+
+.table-wrap th,
+.table-wrap td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #30363d;
+    text-align: left;
+    vertical-align: top;
+}
+
+.table-wrap thead th {
+    background-color: #161b22;
+    color: #f0f6fc;
+}
+
+.table-wrap tbody th {
+    color: #f0f6fc;
+    font-weight: 600;
+}
+
+.table-wrap tbody tr:nth-child(even) {
+    background-color: rgba(22, 27, 34, 0.5);
 }
 
 #self-assessment h3 {
     margin-top: 2.5rem;
 }
 
-#self-assessment h4,
 #artifacts h4 {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
     font-size: 1.05rem;
 }
 
-/*  Intro + Merit badges  */
+/*  Course outcomes. Native <details> as list */
+.outcome {
+    max-width: 70ch;
+    margin-top: 0.75rem;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #161b22;
+}
+
+/*  show open/closed state. */
+.outcome summary {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.outcome summary::-webkit-details-marker {
+    display: none;
+}
+
+.outcome summary:hover {
+    background-color: #1c2129;
+}
+
+.outcome summary:focus-visible {
+    outline: 2px solid #f0f6fc;
+    outline-offset: -2px;
+}
+
+.outcome summary h4 {
+    display: inline;
+    font-size: 1.05rem;
+}
+
+/* To see if section is open */
+.outcome summary::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.65rem;
+    border-right: 2px solid #8b949e;
+    border-bottom: 2px solid #8b949e;
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+}
+
+.outcome[open] summary::before {
+    transform: rotate(45deg);
+}
+
+.outcome[open] summary {
+    border-bottom: 1px solid #30363d;
+}
+
+.outcome > p {
+    margin: 1rem;
+}
+
+/*  Collapsed panels are hidden by the browser */
+@media print {
+    .outcome > p {
+        display: block;
+    }
+}
+
+/*  Narrative section headings are h2, so they sit between the hero h1 and the body text. */
+.narrative h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+/*  Intro  */
 .intro {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
     padding-top: 2.5rem;
 }
 
-.intro-text {
-    flex: 1;
-}
-
-.intro-text h2 {
+.intro h2 {
     margin-top: 0;
 }
 
-.recognition {
-    flex-shrink: 0;
-    width: 260px;
-    text-align: center;
+.intro p {
+    max-width: 70ch;
 }
 
-.merit-badges {
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
+/*  Recognition row belo the intro text. The three headings share a border  */
+.recognition {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .recognition h3 {
-    margin: 2rem 0 0.75rem;
+    margin: 0 0 1rem;
     padding-top: 1.5rem;
     border-top: 1px solid #30363d;
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #8b949e;
+}
+
+.merit-badges {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 1rem;
+}
+
+/*  NCL badge is a tall card, so cap it well under the column width. */
+.ncl-badge {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
 }
 
 .honors {
@@ -227,16 +423,16 @@ a {
     color: #8b949e;
 }
 
-/*  Mobile css */
+/*  Mobile CSS */
 @media (max-width: 640px) {
-    .intro {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2rem;
-    }
-
     .recognition {
-        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
+    /*  Rows wrap on small screens, shrink the buttons */
+    .navbar .btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.875rem;
+    }
 }

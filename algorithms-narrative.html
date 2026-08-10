@@ -1,0 +1,343 @@
+<!-- This is the  HTML file for my Algorithms and Data Structures narrative 8/10/26 -->
+<!-- This code and all HTML files are inspired by https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax -->
+<!-- And examples from Claude were used. The creation of the tables were inspired by an specific example from claude. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms and Data Structures Narrative | Creston Getz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="Site navigation">
+        <div class="navbar-inner">
+            <div class="navbar-row">
+                <a class="btn" href="index.html">Home</a>
+                <a class="btn" href="index.html#self-assessment">Self-Assessment</a>
+                <a class="btn btn-primary" href="index.html#artifacts">Artifacts</a>
+                <a class="btn" href="index.html#code-review">Code Review</a>
+            </div>
+
+            <div class="navbar-row">
+                <span class="navbar-label">Narratives</span>
+                <a class="btn" href="software-design-narrative.html">Software Design</a>
+                <a class="btn" href="algorithms-narrative.html" aria-current="page">Algorithms</a>
+                <a class="btn" href="databases-narrative.html">Databases</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">CS-499 Capstone - Enhancement Narrative</p>
+            <h1>Algorithms and Data Structures Narrative</h1>
+            <p class="tagline">ABCU Course Planner</p>
+
+            <div class="buttons">
+                <a class="btn" href="index.html">Back to ePortfolio</a>
+                <a class="btn" href="https://github.com/crestongetz/ABCU-Course-Planner">Artifact source code</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section narrative">
+        <h2>Artifact description</h2>
+        <p>
+            The ABCU data structures artifact is a C++ application for ABCU University to store and
+            manage its computer science courses. It implements the backend or algorithmic part of
+            the application, as it does not have a front-facing GUI and is used via the terminal.
+            The underlying logic of the application could easily be put into a larger application.
+            The artifact was created for CS-300 Data Structures and Algorithms on 4/12/25.
+        </p>
+
+        <h2>Artifact in ePortfolio &amp; outcomes</h2>
+        <p>
+            I chose this artifact in my ePortfolio for a handful of reasons. First, it directly
+            highlights my ability to solve a problem with algorithmic principles. Second, it allows
+            me to make updates to code I made over a year ago. In that year, I have improved
+            significantly as a developer and wanted to make this application better. Originally, the
+            application used a vector to store the courses. I defended this choice based on the given
+            parameters for the project. The number of courses was very small, and a vector could
+            store, sort, and look up just as fast as a binary search tree and a HashMap at that size.
+        </p>
+        <p>
+            However, let us say that ABCU wants to use the program for the entire university, or
+            there are other universities that want to use it. They want the application to be able to
+            find the information on a course very quickly (lookup), and sorting the courses is not a
+            priority or a feature they care about. They also have extra computing power, so space
+            complexity is not an issue. The vector version uses O(n) space, storing one course per
+            element. The hash table will use O(m + n), where m is the number of buckets even if empty
+            and n is the number of courses. If I were given these new parameters, the main reasons
+            for me choosing a vector would no longer be valid. A hash table's main strength is lookup
+            speed, and its main drawbacks are sorting and overhead. If the application was to be used
+            for looking up course information and not displaying all courses or sorting them, a hash
+            table is a natural choice. Not only will this enhancement show my ability to solve a
+            problem using algorithms, but it shows my ability to determine which is best given the
+            problem at hand.
+        </p>
+        <p>
+            This artifact was improved by swapping the vector for a hash table. Throughout this
+            narrative, I support why a hash table is better for ABCU's needs. I have also included
+            the manual testing I did in the table below and the runtime/space complexity comparison
+            inside this narrative. Instead of using the prebuilt <code>std::unordered_map</code>
+            class, I created my own hash table, sorting algorithm, and way to handle collisions.
+            Then, I incorporated that into the existing program. This enhancement shows that I can solve
+            problems using algorithmic principles by creating my own hash table and sorting
+            algorithm. By accepting a hash table with O(n^2) or O(n log n) sorting in exchange for
+            O(1) lookup time, I highlight my ability to manage the trade-offs in my solutions.
+        </p>
+
+        <h2>Reflection of enhancements</h2>
+        <p>
+            The process of modifying this artifact was not only a lot of fun but also a great
+            learning experience. Even though C++ is not one of my main languages, I greatly admire
+            and enjoy writing in it. Enhancing this artifact, I had to learn how to build a hash
+            table without using the C++ map library. I decided that creating it as a class would fit
+            well into this program. It allowed me to make member functions I can use to manipulate
+            the hash table as well as abstract the logic. My original plan was to use pointers with a
+            linked list to traverse the hash table. I learned after creating the hash table that I
+            needed a way to store the key and the course object, not just one data type. I did some
+            research and found that C++ has something called pairs. These allow you to hold two
+            different data types in a single unit. This was perfect for my needs; I made the key the
+            first element of the pair and the course object the second.
+        </p>
+        <p>
+            The most challenging part of the enhancement was sorting the hash table. Compared to my
+            original implementation using a vector, the hash table has much worse sorting time. I
+            realized that the hash table is inherently unsorted and that sorting the underlying
+            vector used on the hash table would break the hash function. This is an acceptable
+            trade-off, as the whole point of the enhancement was to improve lookup speed, which is
+            O(1 + k) compared to the vector's O(n) or O(log n) if we use binary search. Another added
+            benefit of using a hash table is that if deletion ever needs to be added, it can be done
+            with O(1) compared to O(n) on a sorted vector. I first started by creating a member
+            method that will loop over all the buckets and chains in the hash table and add them to a
+            vector. This method's runtime is O(m + n), where n is the total number of courses and m
+            is the number of buckets. The current application still uses sorting, and each time the
+            data is loaded, it will be stored twice: once in the hash table and once in a vector used
+            for sorting. This could be removed as sorting is not an important feature, but it is kept
+            given the scope of changes.
+        </p>
+        <p>
+            Next, as part of my plan, I needed to create my own sorting algorithm. Because sorting is
+            not a priority and our data is still very small, I opted for insertion sort, which has a
+            time complexity of O(n^2) on unsorted vectors. This application will load the courses
+            into a normal vector at the initial load so that if the user wants to display the full
+            sorted list, it will be O(n), not O(n^2). I could have sorted the vector using
+            <code>std::sort</code> to improve sort time to O(n log n), but it was not a part of my
+            plan nor is it a feature that was requested. At smaller course amounts, insertion sort is
+            actually faster than merge sort or similar algorithms. Not only that, but it also adds
+            nearly zero additional overhead to the application when sorting is not important
+            (GeeksforGeeks, 2025). When the number of courses starts to reach tens or hundreds of
+            thousands, insertion sort will become unusable. However, many universities do not have
+            that many courses. The University of California, Los Angeles (UCLA) has 5,000 total
+            courses and is one of the largest universities in the United States
+            (U.S. News &amp; World Report, 2023).
+        </p>
+        <p>
+            Regardless, using <code>std::sort</code> or removing sorting entirely in production is
+            needed. O(n^2) is an unacceptable time complexity if any sorting is done, and especially
+            when the number of courses starts to scale. However, at only 8 courses, the difference
+            between O(n^2) or O(n) and O(n log n) is unnoticeable. The hash table has only 10 buckets
+            by default for ABCU, but if it is used in a larger university, the size should be
+            increased either manually, or the application will do it automatically (see next
+            section). Finally, with the insertion sort method, I could reuse the same
+            <code>printCoursesAlphanumeric</code> method in my application that I used in the vector
+            version.
+        </p>
+        <p>
+            For security, I made a few important additions. To prevent an attacker or a stakeholder
+            from accidentally reducing the lookup time to O(n), I set a hard limit to the length of
+            chains to 5. If there is a collision, the hash table will start using the chains. If all
+            or most of the courses fall into one chain, then lookup may become O(n) rather than O(1).
+            If the length is more than 5, the hash table will rehash itself and increase its size.
+            This will prevent all of the courses being put into one linked list and dynamically
+            increase the size. Rehashing the table will be O(n) even with O(1) insertions because
+            every course is rehashed into the table. I also added various checks to prevent overly
+            large inputs when loading the data. The application can handle up to 10,000 courses,
+            which, if deployed for each university, is more than enough. Each line and token in the
+            line has a hard limit much higher than needed to prevent obviously incorrect data from
+            being added to the hash table. These security additions do not make the application
+            unbreakable but help with validating the input and preventing large inputs from being
+            taken. This application assumes the CSV file is coming from a trusted source and contains
+            mostly valid data.
+        </p>
+        <p>
+            I made a few smaller improvements to the application. I improved the output formatting
+            and added <code>\r \n</code> stripping to the CSV file, which makes the application more
+            robust. In the vector implementation of the application, if the user clicked on loading
+            the data, it would continue to add it, introducing duplicate data. However, with the hash
+            table, it will only update if there is already an existing key. I created a trim method
+            to remove whitespace from the input. I also created a method to verify the prerequisites,
+            so students do not take courses that do not exist. Using a hash table increases the speed
+            at which prerequisites can be verified. With a vector, n courses will be O(P*n), where P
+            is the prerequisite, and a hash table is O(P). Similar to the software design and engineering
+            category. I incorporated feedback by combining both implementations; the vector and hash table
+            in the same GitHub repo. This makes the changes made much easier to see.
+        </p>
+
+        <h2>Runtime and space complexity comparison</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Operation</th>
+                        <th scope="col">Original (Vector)</th>
+                        <th scope="col">Enhanced (Hash table)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Lookup</th>
+                        <td>O(n) unsorted, O(log n) when sorted with binary search</td>
+                        <td>O(1) or O(n) in worst case</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Insert/update</th>
+                        <td>O(1) if unsorted, O(n) when sorted</td>
+                        <td>O(1)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Display sorted</th>
+                        <td>O(n log n) with <code>std::sort</code></td>
+                        <td>O(m + n) + O(n^2) on initial load then O(n) after</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Space</th>
+                        <td>O(n)</td>
+                        <td>O(m + n) for hash table, and O(n) for sorted vector</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Manual testing</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Test</th>
+                        <th scope="col">Input</th>
+                        <th scope="col">Expected</th>
+                        <th scope="col">Actual</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Load file</td>
+                        <td>Menu 1</td>
+                        <td>8 Courses Loaded</td>
+                        <td>8 Courses Loaded</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Load twice</td>
+                        <td>Menu 1 twice</td>
+                        <td>No duplicates</td>
+                        <td>No duplicates</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Printing or searching without loading</td>
+                        <td>Menu 2, 3, or 4</td>
+                        <td>Normal cout output without course info</td>
+                        <td>Normal cout output without course info</td>
+                        <td>Pass but not fixed</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Printing or searching</td>
+                        <td>Menu 2, 3, or 4</td>
+                        <td>Print course info no errors</td>
+                        <td>Print course info no errors</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Search course</td>
+                        <td>CSCI101</td>
+                        <td>CSCI101 info</td>
+                        <td>CSCI101 info</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Invalid search</td>
+                        <td>CSCI40050</td>
+                        <td>Course not found output</td>
+                        <td>Course not found output</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Invalid menu input</td>
+                        <td>a</td>
+                        <td>Please enter a number from the menu.</td>
+                        <td>Please enter a number from the menu.</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Long line or token</td>
+                        <td>Invalid course number in csv file over 600 chars</td>
+                        <td>No crash. Load rest of data.</td>
+                        <td>No crash. Loads rest of data.</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Invalid course in csv</td>
+                        <td>Only course number and no course name</td>
+                        <td>No crash. Course is not added.</td>
+                        <td>Course was still added to hash table with just course number.</td>
+                        <td>Fixed after testing</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Negative hash table</td>
+                        <td></td>
+                        <td>Error message is outputted. Size is defaulted to 10.</td>
+                        <td>Error message is outputted. Size is defaulted to 10.</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Invalid prerequisite</td>
+                        <td>CS999999</td>
+                        <td>Error message. No crash.</td>
+                        <td>Error message. No crash.</td>
+                        <td>Good</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>References</h2>
+        <ul class="references">
+            <li>
+                GeeksforGeeks. (2025, July 23). <em>Time and space complexity of insertion sort</em>.
+                <a href="https://www.geeksforgeeks.org/dsa/time-and-space-complexity-of-insertion-sort-algorithm/">https://www.geeksforgeeks.org/dsa/time-and-space-complexity-of-insertion-sort-algorithm/</a>
+            </li>
+            <li>
+                U.S. News &amp; World Report. (2023). <em>How does University of California--Los Angeles rank among
+                America's best colleges? University of California--Los Angeles</em>.
+                <a href="https://www.usnews.com/best-colleges/ucla-1315">https://www.usnews.com/best-colleges/ucla-1315</a>
+            </li>
+        </ul>
+
+        <div class="buttons">
+            <a class="btn" href="index.html">Back to ePortfolio</a>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!-- This is the  HTML file for my Software Design and Engineering Narrative 8/10/26 -->
+<!-- This code and all HTML files are inspired by https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax -->
+<!-- And examples from Claude were used -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Design and Engineering Narrative | Creston Getz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="Site navigation">
+        <div class="navbar-inner">
+            <div class="navbar-row">
+                <a class="btn" href="index.html">Home</a>
+                <a class="btn" href="index.html#self-assessment">Self-Assessment</a>
+                <a class="btn btn-primary" href="index.html#artifacts">Artifacts</a>
+                <a class="btn" href="index.html#code-review">Code Review</a>
+            </div>
+
+            <div class="navbar-row">
+                <span class="navbar-label">Narratives</span>
+                <a class="btn" href="software-design-narrative.html" aria-current="page">Software Design</a>
+                <a class="btn" href="algorithms-narrative.html">Algorithms</a>
+                <a class="btn" href="databases-narrative.html">Databases</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">CS-499 Capstone - Enhancement Narrative</p>
+            <h1>Software Design and Engineering Narrative</h1>
+            <p class="tagline">Grazioso Salvare - Animal Shelter Dashboard</p>
+
+            <div class="buttons">
+                <a class="btn" href="index.html">Back to ePortfolio</a>
+                <a class="btn" href="https://github.com/crestongetz/Animal-Shelter-Dashboard-Grazioso-Salvare">Enhanced artifact source code</a>
+                <a class="btn" href="https://github.com/crestongetz/Animal-Shelter-WebDashboard-Grazioso-Salvare/tree/main">Original artifact source code</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section narrative">
+        <h2>Artifact Description</h2>
+        <p>
+            The artifact I am working on for the software design and engineering enhancement is a
+            Company Data Dashboard for Grazioso Salvare, a search and rescue dog training
+            organization. It allows staff to easily filter through data from the Austin Animal
+            Center to identify dogs that match certain criteria for their programs. The dashboard
+            originally used Python Dash and PyMongo. It now uses Dash for the front end and Flask
+            for the backend, communicating via HTTP requests. It was created in CS-340
+            Client/Server Development and was first completed on 2/17/26.
+        </p>
+
+        <h2>Artifact in ePortfolio</h2>
+        <p>
+            I decided to include this artifact in my ePortfolio for a few reasons. It was one of the
+            first projects that taught me how real applications are built. It taught me how
+            databases are built and how applications can use them. While the original dashboard
+            worked, it had a number of flaws such as hard-coded secrets and a monolithic
+            architecture. This project gives me a unique opportunity to highlight a number of skills
+            in software design and engineering. Improving this project shows I know how to take data
+            from a database, use APIs, sort data, and present it in a way that is intuitive for a
+            non-technical user to use. It shows I know how to improve already existing code. Not only
+            that, but it highlights my ability to document software, which was a key part of the
+            course. The artifact improvements will make the application more robust, secure, and
+            easier for the user to interact with.
+        </p>
+
+        <h2>Course Outcomes</h2>
+        <p>
+           The work I did turned out to be better than I thought it would have. I showed that I have a security
+            mindset by implementing a login prompt with Dash and using the API key to secure the
+            APIs. I showed that I can implement computer solutions that deliver value and accomplish
+            a goal by taking a holistic look at what the dashboard does. Grazioso Salvare staff do
+            not need to call the Austin Animal Center or filter through new animals manually. They
+            can simply load the dashboard and load a filter instantly. The various documentation and
+            code comments I created highlight my ability to build collaborative environments. If
+            another developer ever wanted to add onto the dashboard, they would have an easier time.
+        </p>
+
+        <h2>Reflection</h2>
+        <p>
+            To view the changes I made in this enhancement, visit my
+            <a href="https://github.com/crestongetz/Animal-Shelter-Dashboard-Grazioso-Salvare/commits/main">GitHub repository commit page</a>.
+            The process of enhancing this artifact was very enjoyable. I faced many challenges and
+            learned a lot from the process. There were many things that I did not know how to do, so
+            I had to do some research. Before working on this project, I had never used Flask;
+            however, because I am fluent in Python, it was very easy to pick up after looking at
+            examples. I also had never worked with environment variables before and had to do some
+            research on how to use them correctly. I underestimated how much work the enhancement
+            would be. I assumed that I could keep the CRUD and Dash file the same, but this did not
+            turn out to be the case. I had to make many changes to these files.
+        </p>
+        <p>
+            To test my application, I set up a simple MongoDB database on Atlas and had to learn how to connect to it and
+            query it correctly. This was the first time I had done this, and setting up the database
+            was quite easy, but getting it to work end-to-end was much harder. I also made a few
+            small changes to the UI and UX, such as adding a loading icon for the data table, adding
+            an alt tag to the logo, and creating better error handling, so the dashboard doesn't
+            crash on the user. While making changes to the artifact, I received feedback on how to improve it.
+            One of the things I incorporated was a way to visually see the changes made. I decided that using the
+            GitHub commits page would be better than using before and after screenshots of the code.
+            GitHub tracks the incremental changes I made and shows what was added and or deleted.
+        </p>
+        <p>
+            I learned that adding authentication with Dash is very easy. On top of adding security
+            for my API endpoints, I added a login popup to access the dashboard, adding a small layer
+            of security. My original plan was to create a full login page because I thought I needed
+            it. Having this popup to enter login information for an in-house dashboard is more than
+            enough. I also reevaluated using JWTs to secure my APIs. Because all users for this
+            application will have the same permissions, JWTs are not necessarily needed. Instead, I
+            used an API key to secure the endpoints. Before any request is made, the API key will be
+            requested from the front end. If it is not found, then it will send a 401 unauthorized
+            access response. This is much simpler to implement and more than enough security for this
+            application. However, it relies on an attacker not getting the API key, so environment
+            variable management is important. This enhancement was my first time doing many things,
+            and the experience has made me a much stronger developer.
+        </p>
+
+        <div class="buttons">
+            <a class="btn" href="index.html">Back to ePortfolio</a>
+        </div>
+    </section>
+
+</body>
+
+</html>
