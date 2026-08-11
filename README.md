@@ -20,3 +20,7 @@ This GitHub page is an ePortfolio showcasing my capstone projects to demonstrate
   | directory contaning GIFs and pictures for web page.
 - [style.css](https://github.com/crestongetz/crestongetz.github.io/blob/f4e0da56a4edd8887004e0aed3999a8a1bbc3d78/style.css)
   | style page for HTML files.
+
+## Artifacts 
+- [Animal Shelter Dashboard — Grazioso Salvare](https://github.com/crestongetz/Animal-Shelter-Dashboard-Grazioso-Salvare)
+- [ABCU Course Planner](https://github.com/crestongetz/ABCU-Course-Planner)
