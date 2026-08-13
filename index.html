@@ -1,7 +1,8 @@
+<!-- Creston Getz -->
 <!-- This is the main HTML file for my ePortfolio 8/10/26 -->
 <!-- This code and all HTML files are inspired by https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax -->
 <!-- And examples from Claude were used on how to improve UI and UX. It also helped me learn how to connect HTML and CSS -->
- <!-- All content, writing, and orginization is my own -->
+ <!-- All writing, organization, and thoughts are my own -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +65,13 @@
             I found I enjoyed data and AI the most, specifically using data and AI to solve problems
             and build data infrastructure. Not only are these technologies transforming the industry,
             but they are well aligned with my strengths as a computer scientist, a developer, and a person.
+        </p>
+        <p>
+            Looking forward, I am transitioning from student to professional, having accepted a
+            role beginning after graduation. I plan to keep building both my technical skills in
+            data and AI and the soft skills that make that work useful to
+            other people, whether through my job or through open source contributions.
+            The artifacts below are evidence of the skills I bring to that work.
         </p>
 
         <div class="recognition">
@@ -192,13 +200,6 @@
 
         </p>
 
-        <p>
-            Looking forward, I am transitioning from student to professional, having accepted a
-            role beginning after graduation. I plan to keep building both my technical skills in
-            data and AI and the soft skills that make that work useful to
-            other people, whether through my job or through open source contributions.
-            The artifacts below are evidence of the skills I bring to that work.
-        </p>
 
         <h3>Introduction to Artifacts</h3>
 
@@ -289,8 +290,8 @@
             These layers communicate over HTTP allowing all layers to be maintained and updated independently making the code efficient and robust.
             To deliver value to stakeholders the dashboard uses real data. I pulled about 15,000 records from the Austin Animal Center API,
             cleaned it with pandas, and loaded it into MongoDB Atlas. Using the real data is what makes the dashboard something an actual
-            dog rescue company could use. I demonstrated iterative testing with the ABCU course planner. I created a table of ten test cases that
-            covered valid, invalid, or edge case input. I ran these tests manually according to my plan. I found a bug in test eight where
+            dog rescue company could use. I demonstrated iterative testing with the ABCU course planner. I created a table of eleven test cases that
+            covered valid, invalid, or edge case input. I ran these tests manually according to my plan. I found a bug in test nine where
             a course in the csv file with only a course number and no course name was erroneously being added to the hash table.
             I fixed the bug by adding <code>|| tokens[0].empty() || tokens[1].empty()</code> to the if statement in the <code>readFileAndStore</code> method.
             All of the work I did not do was documented in the narratives, such as automatic data loads, backups, and indexing.
@@ -392,7 +393,7 @@
         <p>Category: Algorithms and Data Structures</p>
         <p>Technology: C++</p>
         <div class="buttons">
-            <a class="btn" href="https://github.com/crestongetz/ABCU-Course-Planner">Source code(Enhanced & Original)</a>
+            <a class="btn" href="https://github.com/crestongetz/ABCU-Course-Planner">Source code(Enhanced  &amp; Original)</a>
             <a class="btn" href="algorithms-narrative.html">Narrative</a>
             <a class="btn" href="https://github.com/crestongetz/ABCU-Course-Planner/blob/main/ProjectTwo_HashMap_CS300_Getz.cpp">Enhanced(Hash Table)</a>
             <a class="btn" href="https://github.com/crestongetz/ABCU-Course-Planner/blob/main/ProjectTwo_CS300.cpp">Original(Vector)</a>
