@@ -3,7 +3,7 @@ This is the CSS file for my ePortfolio
 8/10/26
 This file was inspired by https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics
 and inspired by examples from Claude on how to connect CSS to HTML and improve UI and UX.
-
+ 
 */
 
 
@@ -87,9 +87,7 @@ a {
     background-color: #161b22;
 }
 
-/*  Artifacts is the primary destination in the nav, so it gets a filled treatment
-    instead of the outlined default. Fill and weight both change, so the emphasis
-    never depends on color alone. */
+/*  Artifacts is primary destination in the nav */
 .btn-primary {
     background-color: #58a6ff;
     border-color: #58a6ff;
@@ -102,14 +100,7 @@ a {
     border-color: #79c0ff;
 }
 
-/*  Keyboard users need to see what is focused; white reads on both button styles. */
-.btn:focus-visible {
-    outline: 2px solid #f0f6fc;
-    outline-offset: 2px;
-}
-
-/*  Header nav bar. Sticky rather than fixed so it is visible on arrival, takes up
-    its own space at the top of the page, then stays pinned once the user scrolls. */
+/*  Header nav bar.*/
 .navbar {
     position: sticky;
     top: 0;
@@ -141,7 +132,7 @@ a {
     gap: 0.4rem;
 }
 
-/*  Labels the second row so the narratives are not mistaken for page sections. */
+/*  Labels the second row  */
 .navbar-label {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -212,7 +203,7 @@ a {
     max-width: 70ch;
 }
 
-/*  Screenshots in a narrative break out past the 1000px section so UI text stays readable.  */
+/*  Screenshots in database narrative  */
 .narrative-figure {
     width: min(1400px, 92vw);
     max-width: none;
@@ -341,13 +332,6 @@ a {
     margin: 1rem;
 }
 
-/*  Collapsed panels are hidden by the browser */
-@media print {
-    .outcome > p {
-        display: block;
-    }
-}
-
 /*  Narrative section headings are h2, so they sit between the hero h1 and the body text. */
 .narrative h2 {
     margin-top: 2rem;
@@ -368,7 +352,7 @@ a {
     max-width: 70ch;
 }
 
-/*  Recognition row belo the intro text. The three headings share a border  */
+/*  Recognition row below the intro text. The three headings share a border  */
 .recognition {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -393,7 +377,7 @@ a {
     margin-bottom: 1rem;
 }
 
-/*  NCL badge is a tall card, so cap it well under the column width. */
+/*  NCL badge */
 .ncl-badge {
     display: block;
     width: 100%;
