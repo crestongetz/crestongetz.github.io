@@ -24,3 +24,6 @@ This GitHub page is an ePortfolio showcasing my capstone projects to demonstrate
 ## Artifacts 
 - [Animal Shelter Dashboard — Grazioso Salvare](https://github.com/crestongetz/Animal-Shelter-Dashboard-Grazioso-Salvare)
 - [ABCU Course Planner](https://github.com/crestongetz/ABCU-Course-Planner)
+
+## Code Review
+[![Watch the video](https://youtu.be/SVfaSDD4TQM)](https://youtu.be/SVfaSDD4TQM)
